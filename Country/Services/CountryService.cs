@@ -11,10 +11,10 @@ namespace Country.Services
     internal class CountryService
     {
         // Создаем список для хранения данных из источника
-        List<Model.Country> CountryList = new();
+        List<Model.Countrym> CountryList = new();
         // Метод GetCountry() служит для извлечения и сруктурирования данных
         // в соответсвии с существующей моделью данных
-        public async Task<IEnumerable<Model.Country>> GetCountry()
+        public async Task<IEnumerable<Model.Countrym>> GetCountry()
         {
             // Если список содержит какие-то элементы
             // то вернется последовательность с содержимым этого списка
@@ -25,7 +25,7 @@ namespace Country.Services
             using var stream = await FileSystem.OpenAppPackageFileAsync("Countries.json");
             using var reader = new StreamReader(stream);
             var contents = await reader.ReadToEndAsync();
-            CountryList = JsonSerializer.Deserialize<List<Model.Country>>(contents);
+            CountryList = JsonSerializer.Deserialize<List<Model.Countrym>>(contents);
             return CountryList;
         }
     }
